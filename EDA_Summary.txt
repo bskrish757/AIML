@@ -1,0 +1,46 @@
+One Liner : Pneumonia Detection using Computer vision techniques.
+---------
+ 
+Problem statement: 
+------------------
+Pneumonia is a deadly disease which accounts to top 10 causes of deaths world wide especially childrens.
+Diagnosis of this disease is done through the review of Chest Radiograph images,
+pneumonia appears to be areas of high opacity in these images, as the areas affected in lungs will be filled with mucus/pus and doesnot allow xrays to pass through.
+
+The challenge in diagnosing pneumonia through CXR images are
+* Only the highly trained specialist doctors have to review the Chest Radiograph images, patients clinical history and has to take a lot of laboratory examinations for confirmation.
+* The conditions such as fluid overload also appears to be the areas with high opacity in these images.
+* The specialist have to review lot of images per shift making room for human errors aswell.
+
+So to solve these problems a dataset of CXRs is provided by medical associations accross the globe,
+
+Objective
+----------
+Develop a machine learning model which will help to automate the initial detection of potential pneumonia cases.
+
+Data structures:
+-----------------
+1. Training labels Dataframe
+2. Class Detail Info Dataframe
+3. Imputed Training labels Dataframe
+4. Training label height outliers Dataframe
+5. Training label width outliers Dataframe
+6. Training label y co-ordinate outliers Dataframe
+
+EDA observations:
+----------------
+1. There are 2 targets in the training labels file -> 0-Normal , 1-Pneumonia
+2. There are around 30227 examples in the training data
+3. Out of the total examples 26684 are unique, which means remaining are duplicate of one or the other patient, where it means that there are more than 1 bounding boxes for some patients
+4. Some Patients which are classified as NORMAL do not have bounding boxes in the training data
+5. Observed that there are around 20,672 patients are normal and have NULL values for the bounding box co-ordinates x,y, width,height
+6. The number of patients having bounding box heights treated as outliers =  18
+7. The number of patients having bounding box width treated as outliers =  38
+8. The number of patients having bounding box y co-ordinate treated as outliers =  7
+9. we cannot change the width height or y coordinate directly, so we will observe the output of some of these
+  and check if the bounding boxes are not properly defined and remove if required
+10. There are three classes in the detailed class info file which are -> 'No Lung Opacity / Not Normal', 'Normal', 'Lung Opacity' 
+11. All the series in the training labels data set are fairly symmetrically skewed except the column/series height is moderately left skewed
+
+ 
+
